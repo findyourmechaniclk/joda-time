@@ -1,3 +1,8 @@
+# Optimized by ci-cost (https://github.com/mariotavarez/ci-cost)
+# Applied 1 optimization:
+# - [MEDIUM] Add concurrency group to "build.yml"
+# Estimated savings: ~2 min/run
+#
 # build does not work on Java 9 or later as Java 5 is not a valid target
 
 name: Build
@@ -11,6 +16,10 @@ on:
       - 'main'
   workflow_dispatch:
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 
