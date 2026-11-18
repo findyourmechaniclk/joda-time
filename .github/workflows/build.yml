@@ -17,8 +17,9 @@ permissions:
 jobs:
   build:
     permissions:
-      security-events: write  # for github/codeql-action
+        security-events: write  # for github/codeql-action
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout
